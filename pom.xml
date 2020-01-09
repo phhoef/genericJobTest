@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ph</groupId>
+    <artifactId>genericJobTest</artifactId>
+    <version>1.2.1</version>
+    <name>Generic Job Test Module</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.alfresco.maven</groupId>
+        <artifactId>alfresco-sdk-parent</artifactId>
+        <version>2.1.1</version>
+    </parent>
+
+  <build>
+      <plugins>
+          <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.1</version>
+              <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+              </configuration>
+          </plugin>
+          <plugin>
+              <groupId>org.alfresco.maven.plugin</groupId>
+              <artifactId>maven-amp-plugin</artifactId>
+              <version>3.0.4</version>
+              <extensions>true</extensions>
+              <configuration>
+                  <archive>
+                      <addMavenDescriptor>false</addMavenDescriptor>
+                  </archive>
+              </configuration>
+          </plugin>
+      </plugins>
+      <finalName>${project.artifactId}-${project.version}</finalName>
+  </build>
+
+    <!-- This repository is only needed to retrieve Alfresco parent POM. 
+        NOTE: This can be removed when/if Alfresco will be on Maven Central 
+        
+        NOTE: The repository to be used for Alfresco Enterprise artifacts is
+        https://artifacts.alfresco.com/nexus/content/groups/private/. Please check
+        with Alfresco Support to get credentials to add to your ~/.m2/settings.xml
+        if you are a Enterprise customer or Partner  
+        -->
+    <repositories>
+        <repository>
+            <id>alfresco-public</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>alfresco-public-snapshots</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>alfresco-public</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>alfresco-public-snapshots</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+  <modules>
+      <module>genericJobTest-repo</module>
+  </modules>
+</project>
